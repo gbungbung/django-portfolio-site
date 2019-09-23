@@ -1,0 +1,142 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>django portfolio site</Name>
+    <RootNamespace>django portfolio site</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>38e869f9-3244-4a1b-a014-4a7055d2bbd0</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>django_portfolio_site.settings</DjangoSettingsModule>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="manage.py" />
+    <Compile Include="django_portfolio_site\__init__.py" />
+    <Compile Include="django_portfolio_site\settings.py" />
+    <Compile Include="django_portfolio_site\urls.py" />
+    <Compile Include="django_portfolio_site\wsgi.py" />
+    <Compile Include="portfolio\admin.py" />
+    <Compile Include="portfolio\apps.py" />
+    <Compile Include="portfolio\forms.py" />
+    <Compile Include="portfolio\migrations\0001_initial.py" />
+    <Compile Include="portfolio\migrations\0002_art.py" />
+    <Compile Include="portfolio\migrations\0003_art_featured.py" />
+    <Compile Include="portfolio\migrations\0004_auto_20190923_1155.py" />
+    <Compile Include="portfolio\migrations\__init__.py" />
+    <Compile Include="portfolio\models.py" />
+    <Compile Include="portfolio\tests.py" />
+    <Compile Include="portfolio\urls.py" />
+    <Compile Include="portfolio\views.py" />
+    <Compile Include="portfolio\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="portfolio\migrations\__pycache__\0001_initial.cpython-37.pyc" />
+    <Content Include="portfolio\migrations\__pycache__\0002_art.cpython-37.pyc" />
+    <Content Include="portfolio\migrations\__pycache__\0003_art_featured.cpython-37.pyc" />
+    <Content Include="portfolio\migrations\__pycache__\0004_auto_20190923_1155.cpython-37.pyc" />
+    <Content Include="portfolio\migrations\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="portfolio\static\bootstrap\css\bootstrap.min.css" />
+    <Content Include="portfolio\static\bootstrap\js\bootstrap.min.js" />
+    <Content Include="portfolio\static\fonts\ionicons.eot" />
+    <Content Include="portfolio\static\fonts\ionicons.min.css" />
+    <Content Include="portfolio\static\fonts\ionicons.svg" />
+    <Content Include="portfolio\static\fonts\ionicons.ttf" />
+    <Content Include="portfolio\static\fonts\ionicons.woff" />
+    <Content Include="portfolio\static\img\avatars\avatar.jpg" />
+    <Content Include="portfolio\static\img\nature\image1.jpg" />
+    <Content Include="portfolio\static\img\nature\image2.jpg" />
+    <Content Include="portfolio\static\img\nature\image3.jpg" />
+    <Content Include="portfolio\static\img\nature\image4.jpg" />
+    <Content Include="portfolio\static\img\nature\image5.jpg" />
+    <Content Include="portfolio\static\img\nature\image6.jpg" />
+    <Content Include="portfolio\static\img\nature\image7.jpg" />
+    <Content Include="portfolio\static\img\nature\image8.jpg" />
+    <Content Include="portfolio\static\img\nature\image9.jpg" />
+    <Content Include="portfolio\static\img\tech\image4.jpg" />
+    <Content Include="portfolio\static\img\tech\image6.png" />
+    <Content Include="portfolio\static\js\jquery.min.js" />
+    <Content Include="portfolio\static\js\theme.js" />
+    <Content Include="portfolio\templates\contact.html" />
+    <Content Include="portfolio\templates\cv.html" />
+    <Content Include="portfolio\templates\gridprojects.html" />
+    <Content Include="portfolio\templates\index.html" />
+    <Content Include="portfolio\templates\layout.html" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="django_portfolio_site\" />
+    <Folder Include="portfolio\" />
+    <Folder Include="portfolio\migrations\" />
+    <Folder Include="portfolio\migrations\__pycache__\" />
+    <Folder Include="portfolio\static\" />
+    <Folder Include="portfolio\static\bootstrap\" />
+    <Folder Include="portfolio\static\bootstrap\css\" />
+    <Folder Include="portfolio\static\bootstrap\js\" />
+    <Folder Include="portfolio\static\fonts\" />
+    <Folder Include="portfolio\static\img\" />
+    <Folder Include="portfolio\static\img\avatars\" />
+    <Folder Include="portfolio\static\img\nature\" />
+    <Folder Include="portfolio\static\img\tech\" />
+    <Folder Include="portfolio\static\js\" />
+    <Folder Include="portfolio\templates\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
