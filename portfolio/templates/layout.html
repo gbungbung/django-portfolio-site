@@ -24,7 +24,7 @@
                     {% if request.user.is_staff %}
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/resume">{{user.username}}</a></li>
                     {% else %}
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="hire-me.html">Hire me</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/hire">Hire me</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -57,7 +57,7 @@
 
     <footer class="page-footer">
         <div class="container">
-            <div class="links"><a href="#">About me</a><a href="/contact">Contact me</a><a href="#">Projects</a></div>
+            <div class="links"><a href="#">About me</a><a href="#">Contact me</a><a href="#">Projects</a></div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
         </div>
     </footer>

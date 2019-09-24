@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
-from django.core.mail import send_mail
 
-from portfolio.models import DesignerDetails, Art
-from portfolio.forms import ContactMe
+from portfolio.models import DesignerDetails, Art, Hires
+from portfolio.forms import HireMe, Upload
 
 class Home(View):
     template_name = 'index.html'
@@ -15,33 +14,39 @@ class Home(View):
         return render(request, self.template_name, {'title':'Homepage', 'details':'details', 'art':'arts'})
 
 class Myart(View):
+    form_class = Upload
     template_name= 'gridprojects.html'
 
     def get(self, request, *arg, **kwarg):
         arts = Art.objects.all().order_by()
         return render(request, self.template_name, {'title':'Photograph and prints', 'art':'art'})
 
-class Contact(View):
-    form_class = ContactMe
-    template_name = 'contact.html'
-    home = 'index.html'
+    def post(self, request, id):
+        designer = get_designer(request.user) #Instance user have to be defined. I'll define after adding register button
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.designer= designer 
+            form.save()
+            return redirect(reverse('art-details', parmanent= True, kwarg={'id':self.instance.id} ))
+
+class Hire(View):
+    form_class = HireMe
+    template_name = 'hireme.html'
+    hires = 'hires.html'
 
     def get(self, request, *arg, **kwarg):
-        form =  ContactMe()
-        return render(request, self.template_name, {'title':'Contact'})
+        if request.user.is_authenticated:
+            data = Hires.objects.all().order_by('-time')
+            return render(request, self.hires, {'title':'Hires', 'message':'data'})
+        else:
+            form = HireMe()
+        return render(request, self.template_name, {'title':'Hire'})
 
     def post(self, request, *arg, **kwarg):
         form = self.form_class(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            subject = form.cleaned_data['subject']
-            sender = form.cleaned_data['your_email']
-            message = form.cleaned_data['message']
+            email = form.cleaned_data['Email']
+            form.save()
+            return redirect('/success/')
 
-            recipients = ['gbungbung@gmail.com']
-            if cc_myself:
-                recipients.append(sender)
 
-            send_mail(subject, message, sender, recipients)
-            return HttpResponseRedirect('/sent/')#how this works
-        return render(request, self.home, {'title':'Sent'})

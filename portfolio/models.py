@@ -10,7 +10,7 @@ class DesignerDetails(models.Model):
     schooldescription = models.TextField(max_length=50)
     schoolstiestamp = models.DateTimeField(auto_now_add= True)
     skills = models.CharField(max_length= 50)
-    skillscapacity = models.IntegerField()#will  write in percentage mode
+    skillscapacity = models.IntegerField() #I want to show ability in percentage mode
     job = models.CharField(max_length= 50)
     company = models.CharField(max_length=50)
     workingtime = models.DateTimeField(auto_now_add= True)
@@ -34,7 +34,7 @@ class Art(models.Model):
     size = models.IntegerField()
     description = models.TextField(max_length= 500)
     datemade = models.DateTimeField(auto_now_add= True)
-    caategorie = models.ForeignKey(ArtCategory, on_delete=models.CASCADE)
+    categorie = models.ForeignKey(ArtCategory, on_delete=models.CASCADE)
     featured = models.BooleanField()
 
     def __str__(self):
@@ -43,5 +43,16 @@ class Art(models.Model):
     def get_absolute_url(self):
         return reverse('art-details', kwarg= {'id':self.id})
 
-    def upload_url(self):
-        return reverse('upload-details', kwargs= {'id':self.id})
+class Hires(models.Model):
+    name = models.CharField(max_length= 50)
+    subject = models.CharField(max_length= 50)
+    senderemail = models.EmailField()
+    message = models.TextField()
+    time_choosen = models.TimeField()
+    time = models.DateTimeField(auto_now_add= True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('hired', kwarg={'id':self.id})
