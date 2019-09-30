@@ -45,6 +45,19 @@
     <Compile Include="portfolio\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="portfolio\templates\cvadd.html" />
+    <Content Include="portfolio\templates\resume.html" />
+    <Content Include="portfolio\templates\gridprojects.html" />
+    <Content Include="portfolio\templates\hireme.html" />
+    <Content Include="portfolio\templates\index.html" />
+    <Content Include="portfolio\templates\layout.html" />
+    <Content Include="portfolio\templates\hires.html" />
+    <Content Include="portfolio\templates\project.html" />
+    <Content Include="portfolio\templates\register.html" />
+    <Content Include="portfolio\templates\resumeup.html" />
+    <Content Include="portfolio\templates\signin.html" />
+    <Content Include="portfolio\templates\upload.html" />
+    <Content Include="requirements.txt" />
     <Content Include="portfolio\static\bootstrap\css\bootstrap.min.css" />
     <Content Include="portfolio\static\bootstrap\js\bootstrap.min.js" />
     <Content Include="portfolio\static\fonts\ionicons.eot" />
@@ -66,19 +79,13 @@
     <Content Include="portfolio\static\img\tech\image6.png" />
     <Content Include="portfolio\static\js\jquery.min.js" />
     <Content Include="portfolio\static\js\theme.js" />
-    <Content Include="portfolio\templates\cv.html" />
-    <Content Include="portfolio\templates\gridprojects.html" />
-    <Content Include="portfolio\templates\hireme.html" />
-    <Content Include="portfolio\templates\index.html" />
-    <Content Include="portfolio\templates\layout.html" />
-    <Content Include="portfolio\templates\hires.html" />
-    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="django_portfolio_site\" />
     <Folder Include="portfolio\" />
     <Folder Include="portfolio\migrations\" />
     <Folder Include="portfolio\static\" />
+    <Folder Include="portfolio\templates\" />
     <Folder Include="portfolio\static\bootstrap\" />
     <Folder Include="portfolio\static\bootstrap\css\" />
     <Folder Include="portfolio\static\bootstrap\js\" />
@@ -88,7 +95,6 @@
     <Folder Include="portfolio\static\img\nature\" />
     <Folder Include="portfolio\static\img\tech\" />
     <Folder Include="portfolio\static\js\" />
-    <Folder Include="portfolio\templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

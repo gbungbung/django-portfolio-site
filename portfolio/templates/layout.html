@@ -19,45 +19,32 @@
                 id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="/">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="projects-grid-cards.html">Projects</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/resume">Resume</a></li>
-                    {% if request.user.is_staff %}
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/resume">{{user.username}}</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'portfolio:art' %}">Projects</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'portfolio:resume' %}">{{ user.username }}</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'portfolio:logout' %}">Sign out</a></li>
                     {% else %}
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/hire">Hire me</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'portfolio:resume' %}">Resume</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'portfolio:hire' %}">Hire me</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
-<!--    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand">geoDesigner</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                </ul>
-       #####         % include 'app/loginpartial.html' %
-            </div>
-        </div>
-    </div>-->
-
-
 {% block content %}{% endblock %}
 
     <footer class="page-footer">
         <div class="container">
-            <div class="links"><a href="#">About me</a><a href="#">Contact me</a><a href="#">Projects</a></div>
+            <div class="links">
+                <a href="#">About site</a>
+                <a href="#">Contact me</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'portfolio:logout' %}">Sign out</a>
+                {% else %}
+                <a href="{% url 'portfolio:signin' %}">Staff</a>
+                {% endif %}
+            </div>
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
         </div>
     </footer>

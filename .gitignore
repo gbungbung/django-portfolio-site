@@ -338,3 +338,10 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+obj
+webmedia
+.gitattributes
+db.sqlite3
+__pycache__
+img

@@ -6,26 +6,20 @@
 
     
     <main class="page lanidng-page">
-        <section class="portfolio-block block-intro">
-            <div class="container">
-                <div class="avatar" style="background-image:url(&quot;{% static '/img/avatars/avatar.jpg' %}&quot;);"></div>
-                <div class="about-me">
-                    <p>Hello! I am <strong>Geoffre Bung'bung'</strong>. I work as graphics designer and python django developer. I have passion for pixel perfect, minimal and easy to use interfaces.</p><a class="btn btn-outline-primary" role="button" href="#">Hire me</a></div>
-            </div>
-        </section>
+        {% include 'resumeup.html' %}
         <section class="portfolio-block photography">
             <div class="container">
                 <div class="row no-gutters">
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="#"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{% static '/img/nature/image2.jpg' %}"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{% static '/img/tech/image4.jpg' %}" /></a></div>
+                    {% for art in arts %}
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{{ art.img.url }}"></a></div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
         <section class="portfolio-block call-to-action border-bottom">
             <div class="container">
                 <div class="d-flex justify-content-center align-items-center content">
-                    <h3>Like what you see?</h3><button class="btn btn-outline-primary btn-lg" type="button" >Hire me</button></div>
+                    <h3>Like what you see?</h3><a class="btn btn-outline-primary" role="button" href="{% url 'portfolio:hire' %}">Hire me</a></di</div>
             </div>
         </section>
         <section class="portfolio-block skills">
@@ -39,7 +33,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title"><a href="#">Web Design</a></h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text">Find ready for deploy, under-development and all commercial plus open source code projects.</p>
                             </div>
                         </div>
                     </div>
@@ -48,7 +42,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title"><a href="#">3D Design</a></h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text">Game character, Game environment, rigged mascots, here their home and industry.</p>
                             </div>
                         </div>
                     </div>
@@ -57,7 +51,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title"><a href="/art">Photography and Print</a></h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text">Explore beautful photos and creative 2D draws, designed uniquely to thooth your vision.</p>
                             </div>
                         </div>
                     </div>
@@ -69,8 +63,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                    <h3>Website Project</h3>
-                    <p>This site is still under development lookout the source code <a href="#">here</a></p>
+                    <h3 align="left">Website Project</h3>
+                    <p align="left">This site is still under development lookout how it goes in github <a href="#">here</a></p>
                 </div>
                 <div class="col-md-12 col-lg-5">
                     <div class="portfolio-laptop-mockup">

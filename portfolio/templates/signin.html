@@ -1,0 +1,24 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+    <main class="page contact-page">
+        <section class="portfolio-block contact">
+            <div class="container">
+                <div class="heading">
+                    <h2>Sign in</h2>
+                </div>
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group" aria-required="{% if field.field.required %}"true"{% else %}"false"{% endif %}">
+                        {{ field.label_tag }}{% if field.field.required %}<span class="required"></span>{% endif %}
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    <div class="form-group"><button class="btn btn-primary btn-block btn-lg" type="submit">Sign in</button></div>
+                    <p align="center"><small>Dont have account? <a href="/register">register</a></small></p>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

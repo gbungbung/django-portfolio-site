@@ -4,12 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'be108ffd-fc54-4874-b793-970b5c49705d'
-
-#SECRET_KEY = os.environ['SECRET_KEY']
-
-#with open('portfolio/text.txt') as f:
-#    SECRET_KEY.f.read().strip()
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -27,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 # Middleware framework
 MIDDLEWARE = [
@@ -53,6 +49,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -66,7 +63,7 @@ WSGI_APPLICATION = 'django_portfolio_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -100,6 +97,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'portfolio/static'),
     ]
 VENV = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(VENV, 'static_root')
-MEDIA_ROOT = os.path.join(VENV, 'media_root')
+STATIC_ROOT = os.path.join(VENV, 'django portfolio site/webstatic')
+MEDIA_ROOT = os.path.join(VENV, 'django portfolio site/webmedia')
+
+#Default redirect url, overiding the django default redirect for signing to account/profile 
+LOGIN_REDIRECT_URL = '/'
 
