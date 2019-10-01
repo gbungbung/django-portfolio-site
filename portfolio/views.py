@@ -1,6 +1,6 @@
 from django.views import View
 from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, get_user_model, login
 
 from portfolio.forms import HireMe, RegisterForm, LoginForm, UploadForm, CvForm
@@ -68,7 +68,8 @@ class Resume(View):
 
     def get(self, request, *args, **kwargs):
         details = Profile.objects.all().filter(user_id=2)
-        return render(request, self.template_name, {'title':'Resume', 'details':details})
+        cvs = Cv.objects.all()
+        return render(request, self.template_name, {'title':'Resume', 'details':details, 'cvs':cvs})
 
 class Resume_add(View):
     template_name= 'cvadd.html'
@@ -78,11 +79,11 @@ class Resume_add(View):
         form= self.form_class()
         return render(request, self.template_name, {'title':'Add resume details', 'form':form})
 
-    def cv_add(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('resume'))
+            return redirect('/')
         return render(request, self.template_name, {})
 
 class Cv_edit(View):
@@ -93,12 +94,12 @@ class Cv_edit(View):
         form = self.form_class()
         return render(request, self.template_name, {'title':'Edit resume', 'form':form})
 
-    def cv_edit(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         cv= get_object_or_404(Cv, id=id)
         form = self.form_class(request.POST, instance=cv)
         if form.is_valid():
             form.save()
-            return redirect(reverse('resumedetails', kwargs= {'id':self.id}))
+            return redirect('/')
         return render(request, self.template_name, {})
 
 class Cv_delete(View):

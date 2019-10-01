@@ -57,6 +57,7 @@
     <Content Include="portfolio\templates\resumeup.html" />
     <Content Include="portfolio\templates\signin.html" />
     <Content Include="portfolio\templates\upload.html" />
+    <Content Include="README.MD" />
     <Content Include="requirements.txt" />
     <Content Include="portfolio\static\bootstrap\css\bootstrap.min.css" />
     <Content Include="portfolio\static\bootstrap\js\bootstrap.min.js" />

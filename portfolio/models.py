@@ -37,6 +37,9 @@ class Cv(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('resume', kwargs={'id':self.id})
 
 class ArtCategory(models.Model):
     name = models.CharField(max_length=50)
