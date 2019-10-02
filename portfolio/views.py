@@ -150,8 +150,8 @@ class Hire(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            data = Hires.objects.all().order_by('-time')
-            return render(request, self.hires, {'title':'Hires', 'message':data})
+            data = Hires.objects.all().order_by('id')
+            return render(request, self.hires, {'title':'Hires', 'data':data})
         else:
             form = self.form_class()
         return render(request, self.template_name, {'title':'Hire', 'form':form})
