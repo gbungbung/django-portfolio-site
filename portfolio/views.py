@@ -148,7 +148,7 @@ class Hire(View):
     template_name = 'hireme.html'
     hires = 'hires.html'
 
-    def get(self, request, *arg, **kwarg):
+    def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             data = Hires.objects.all().order_by('-time')
             return render(request, self.hires, {'title':'Hires', 'message':data})
@@ -156,12 +156,11 @@ class Hire(View):
             form = self.form_class()
         return render(request, self.template_name, {'title':'Hire', 'form':form})
 
-    def post(self, request, *arg, **kwarg):
-        form = self.form_class(request.POST)
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST or None)
         if form.is_valid():
-            email = form.cleaned_data['Email']
             form.save()
-            return redirect('/success/')
+            return redirect('/')
         return render(request, self.template_name, {})
 
 

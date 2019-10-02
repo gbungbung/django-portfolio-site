@@ -8,6 +8,7 @@
                 <h2>Hire Me</h2>
             </div>
             <form method="post" action=".">
+                {% csrf_token %}
                 {{ form }}
                 <div class="form-group"><button class="btn btn-primary mt-3 btn-block btn-2g" type="submit">Hire</button></div>
             </form>
