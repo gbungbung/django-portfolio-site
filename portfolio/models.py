@@ -41,6 +41,9 @@ class Cv(models.Model):
     def get_absolute_url(self):
         return reverse('resume', kwargs={'id':self.id})
 
+    def get_update_url(self):
+        return reverse('resumeedit', kwargs={'id':self.id})
+
 class ArtCategory(models.Model):
     name = models.CharField(max_length=50)
 

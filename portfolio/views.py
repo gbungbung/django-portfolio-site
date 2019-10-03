@@ -86,17 +86,17 @@ class Resume_add(View):
             return redirect('/')
         return render(request, self.template_name, {})
 
-class Cv_edit(View):
+class Resume_edit(View):
     form_class = CvForm
     template_name= 'cvadd.html'
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, id):
         form = self.form_class()
         return render(request, self.template_name, {'title':'Edit resume', 'form':form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, id):
         cv= get_object_or_404(Cv, id=id)
-        form = self.form_class(request.POST, instance=cv)
+        form = self.form_class(request.POST or None, instance=cv)
         if form.is_valid():
             form.save()
             return redirect('/')
