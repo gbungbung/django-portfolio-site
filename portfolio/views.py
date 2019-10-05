@@ -95,7 +95,7 @@ class Resume_edit(View):
         return render(request, self.template_name, {'title':'Edit resume', 'form':form})
 
     def post(self, request, pk):
-        cv= get_object_or_404(Cv, id=id)
+        cv= get_object_or_404(Cv, pk=pk)
         form = self.form_class(request.POST or None, instance=cv)
         if form.is_valid():
             cv = form.save()
@@ -103,10 +103,8 @@ class Resume_edit(View):
         return render(request, self.template_name, {})
 
 class Resume_delete(View):
-    template_name= 'cvadd.html'
-    form_class = CvForm
 
-    def cv_delete(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         cv = get_object_or_404(Cv, pk=pk)
         cv.delete()
         return redirect('/')
