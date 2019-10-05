@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="portfolio\templates\cvadd.html" />
+    <Content Include="portfolio\templates\cvdetail.html" />
     <Content Include="portfolio\templates\resume.html" />
     <Content Include="portfolio\templates\gridprojects.html" />
     <Content Include="portfolio\templates\hireme.html" />

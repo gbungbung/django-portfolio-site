@@ -13,8 +13,9 @@ urlpatterns = [
     path('hire/<id>/', views.Hire.as_view(), name= 'hired'),                                     #will be used for specific hire
     path('resume/', views.Resume.as_view(), name= 'resume'),
     path('resumeadd/', views.Resume_add.as_view(), name= 'resumeadd'),
-    path('resume/<id>/edit', views.Resume_edit.as_view(), name= 'resumeedit'),
-    path('resume/<id>/delete', views.Resume.as_view(), name= 'resumedelete'),
+    path('resumedetail/<int:pk>/', views.Resume.as_view(), name='resumedetail'),
+    path('resume/<int:pk>/edit/', views.Resume_edit.as_view(), name= 'resumeedit'),
+    path('resume/<int:pk>/delete/', views.Resume_delete.as_view(), name= 'resumedelete'),
     path('register/', views.Register.as_view(), name= 'register'),
     path('signin/', views.Login.as_view(), name='signin'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),

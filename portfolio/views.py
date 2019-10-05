@@ -1,6 +1,5 @@
 from django.views import View
-from django.urls import reverse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth import authenticate, get_user_model, login
 
 from portfolio.forms import HireMe, RegisterForm, LoginForm, UploadForm, CvForm
@@ -68,8 +67,8 @@ class Resume(View):
 
     def get(self, request, *args, **kwargs):
         details = Profile.objects.all().filter(user_id=2)
-        cvs = Cv.objects.all()
-        return render(request, self.template_name, {'title':'Resume', 'details':details, 'cvs':cvs})
+        cv = Cv.objects.all()
+        return render(request, self.template_name, {'title':'Resume', 'details':details, 'cv':cv})
 
 class Resume_add(View):
     template_name= 'cvadd.html'
@@ -84,32 +83,33 @@ class Resume_add(View):
         if form.is_valid():
             form.save()
             return redirect('/')
-        return render(request, self.template_name, {})
+        return render(request, self.template_name, {'title':'Add resume details'})
 
 class Resume_edit(View):
     form_class = CvForm
     template_name= 'cvadd.html'
 
-    def get(self, request, id):
-        form = self.form_class()
+    def get(self, request, pk):
+        cv= get_object_or_404(Cv, pk=pk)
+        form = self.form_class(instance=cv)
         return render(request, self.template_name, {'title':'Edit resume', 'form':form})
 
-    def post(self, request, id):
+    def post(self, request, pk):
         cv= get_object_or_404(Cv, id=id)
         form = self.form_class(request.POST or None, instance=cv)
         if form.is_valid():
-            form.save()
+            cv = form.save()
             return redirect('/')
         return render(request, self.template_name, {})
 
-class Cv_delete(View):
+class Resume_delete(View):
     template_name= 'cvadd.html'
     form_class = CvForm
 
     def cv_delete(self, request, *args, **kwargs):
-        cv = get_object_or_404(Cv, id=id)
+        cv = get_object_or_404(Cv, pk=pk)
         cv.delete()
-        return render(request, self.template_name, {})
+        return redirect('/')
 
 class Myart(View):
     template_name= 'gridprojects.html'
