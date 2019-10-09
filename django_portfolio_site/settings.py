@@ -100,6 +100,3 @@ VENV = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(VENV, 'django portfolio site/webstatic')
 MEDIA_ROOT = os.path.join(VENV, 'django portfolio site/webmedia')
 
-#Default redirect url, overiding the django default redirect for signing to account/profile 
-LOGIN_REDIRECT_URL = '/'
-

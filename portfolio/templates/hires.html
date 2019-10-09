@@ -2,26 +2,27 @@
 
 {% block content %}
 <main class="page cv-page">
-        {% include 'resumeup.html' %}
         <section class="portfolio-block cv">
             <div class="container">
                 <div class="education group">
                     <div class="heading mb-4">
                         <h2 class="text-center">Hires</h2>
                     </div>
-                    {% for txt in data %}
-                    <div class="item mt-2">
+                   
+                    <div class="item mt-2"> 
+                        {% for txt in hires %}
+                        <div>
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>{{ txt.name }}</h3>
-                                <h4 class="organization">{{ txt.subject }}</h4>
+                                <h4 class="organization">{{ txt.subjects }}</h4>
                             </div>
-                            <div class="col-6"><span class="period">{{ txt.time_chosen }}</span></div>
                         </div>
                         <p class="text-muted">{{ txt.message }}</p>
-                        <p class="text-muted">Contact me through {{ txt.email }}.</p>
+                        <p class="text-muted">Contact me through {{ txt.Your_email }}.</p>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </section>

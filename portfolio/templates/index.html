@@ -3,15 +3,27 @@
 {% load staticfiles %}
 
 {% block content %}
-
-    
     <main class="page lanidng-page">
-        {% include 'resumeup.html' %}
+        <section class="portfolio-block block-intro">
+            {% for details in details %}
+        <div class="container">
+             <div class="avatar" style="background-image:url(&quot;{{ details.prof_pic.url }}&quot;);"></div>
+             <div class="about-me">
+                   <p>Hello! I am <strong>{{ details.user.first_name}} {{ details.user.last_name }}</strong>. {{ details.bio }}</p>
+                   <a class="btn btn-outline-primary" role="button" href="{% url 'portfolio:hire' %}">Hire me</a>
+             </div>
+        </div>
+        {% endfor %}
+        </section>
         <section class="portfolio-block photography">
             <div class="container">
                 <div class="row no-gutters">
                     {% for art in arts %}
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="{{ art.img.url }}"></a></div>
+                    <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                        <a href="{% url 'portfolio:artdetail' pk=art.pk %}">
+                          <img class="img-fluid image" src="{{ art.img.url }}">
+                        </a>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
@@ -19,7 +31,9 @@
         <section class="portfolio-block call-to-action border-bottom">
             <div class="container">
                 <div class="d-flex justify-content-center align-items-center content">
-                    <h3>Like what you see?</h3><a class="btn btn-outline-primary" role="button" href="{% url 'portfolio:hire' %}">Hire me</a></di</div>
+                    <h3>Like what you see?</h3>
+                    <a class="btn btn-outline-primary" role="button" href="{% url 'portfolio:hire' %}">Hire me</a>
+                </div>
             </div>
         </section>
         <section class="portfolio-block skills">
@@ -62,9 +76,9 @@
     <section class="portfolio-block website gradient">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                    <h3 align="left">Website Project</h3>
-                    <p align="left">This site is still under development lookout how it goes in github <a href="#">here</a></p>
+                <div class="col-md-12 col-lg-5 offset-lg-1 text-left">
+                    <h3>Website Project</h3>
+                    <p >This site is still under development lookout how it goes in github <a href="#">here</a></p>
                 </div>
                 <div class="col-md-12 col-lg-5">
                     <div class="portfolio-laptop-mockup">

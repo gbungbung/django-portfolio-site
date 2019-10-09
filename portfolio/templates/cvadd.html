@@ -1,18 +1,16 @@
 ﻿{% extends "layout.html" %}
 
-{% load staticfiles %}
-
 {% block content %}
     <main class="page contact-page">
         <section class="portfolio-block contact">
             <div class="container">
                 <div class="heading">
-                    <h2>Add work details</h2>
+                    <h2>{{ data }} resume</h2>
                 </div>
                 <form method="post" action="." >
                     {% csrf_token %}
                     {% for field in form %}
-                    <div class="form-group" aria-required="{% if field.field.required %}"true"{% else %}"false"{% endif %}">
+                    <div class="form-group" aria-required="{% if field.field.required %}'true'{% else %}'false'{% endif %}">
                         {{ field.label_tag }}{% if field.field.required %}<span class="required"></span>{% endif %}
                         {{ field }}
                     </div>
