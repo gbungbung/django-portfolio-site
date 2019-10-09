@@ -1413,6 +1413,7 @@ MigrationBackup/
 
 obj
 webmedia
+webstatic
 .gitattributes
 db.sqlite3
 __pycache__
